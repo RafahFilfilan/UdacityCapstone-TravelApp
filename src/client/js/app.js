@@ -6,19 +6,25 @@ const handleSubmit = async (event) => {
 	let dateStart = document.getElementById('dateStart').value;
 	let dateEnd = document.getElementById('dateEnd').value;
 	
+	//Check if origin city is empty
 	if(cityFrom === ""){
 		alert('Cannot proceed with empty origin');
 		return;
 	}
+	//Check if destination city is empty
 	if(cityTo === ""){
 		alert('Cannot proceed with empty destination');
 		return;
 	}	
 	
+	//Calculate the length of the trip by subtracting then divide by 1000*3600*24
+	// => *1000 miliseconds to seconds
+	// => *60*60 seconds to minutes then hours
+	// => *24 hours to days
 	let tripStart = new Date(dateStart);
 	let tripEnd = new Date(dateEnd);
 	let daysDiff = (tripEnd.getTime() - tripStart.getTime())/(1000*3600*24);
-	console.log(daysDiff)
+	
 	console.log("::: Form Submitted :::")
 	
 
@@ -29,6 +35,7 @@ const handleSubmit = async (event) => {
 	let pixaData = {};
 	
 	console.log("::: Using GeoNames here :::");
+	// to POST GeoNames API data as JSON
 	const postGeoData = await fetch ('http://localhost:8080/cityTo', {
 		method: 'POST',
 		mode: 'cors',
@@ -41,17 +48,12 @@ const handleSubmit = async (event) => {
 	
 	try {
 		const newGeoData = await postGeoData.json();
-		//Data as: Name - Country - Feature class - Latitude - Longitude
 		paradise = {
 			city: newGeoData.geonames[0].name,
 			country: newGeoData.geonames[0].countryName,
 			lat: newGeoData.geonames[0].lat,
 			lon: newGeoData.geonames[0].lng
 		}
-		let cityXYZ = newGeoData.geonames[0].name;
-		let countryXYZ = newGeoData.geonames[0].countryName;
-		let latXYZ = newGeoData.geonames[0].lat;
-		let lonXYZ = newGeoData.geonames[0].lng;
 		
 		//return paradise;
 	} catch (error){
@@ -59,6 +61,7 @@ const handleSubmit = async (event) => {
 	}
 
 	console.log("::: Using WeatherBit here :::");
+	// to POST WeatherBit API data as JSON
 	const postWeatherData = await fetch ('http://localhost:8080/findWeather', {
 		method: 'POST',
 		mode: 'cors',
@@ -77,6 +80,7 @@ const handleSubmit = async (event) => {
 	}
 
 	console.log("::: Using PixaBay here :::");
+	// to POST Pixabay API data as JSON
 	const postPixaData = await fetch ('http://localhost:8080/findImage', {
 		method: 'POST',
 		mode: 'cors',
@@ -94,6 +98,7 @@ const handleSubmit = async (event) => {
 		console.log('error', error)
 	}
 	
+	// Calling UpdateUI function to post everything on index.html
 	const htmlSection = document.getElementById('results');
 	htmlSection.innerHTML = updateUI(dateStart, dateEnd, daysDiff, paradise, weatherData, pixaData);
 	
@@ -101,7 +106,7 @@ const handleSubmit = async (event) => {
 } //End of handleSubmit 
 	
 	
-	
+// This function doesn't return a value, just return html text.
 function updateUI (dateStart, dateEnd, daysDiff, paradise, weatherData, pixaData){
 	return `
 		<div id="timeTravel">
