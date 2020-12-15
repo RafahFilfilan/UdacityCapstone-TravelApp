@@ -34,17 +34,11 @@ const geoUsername = "&username=" + process.env.username;
 const geoTextHolder = "&type=json";
 
 
-console.log(`GeoName: ${process.env.username}`);
-
-
 app.post('/cityTo', async function (req, res) {
 	cityTo = req.body.cityTo;
 	
-	console.log(cityTo);
-	console.log(geoBaseUrl+cityTo+geoUsername+geoTextHolder);
 	const responseTo = await fetch (geoBaseUrl+cityTo+geoUsername+geoTextHolder);
 	const geoNamesTo = await responseTo.json();
-	console.log(geoNamesTo);
 	res.json(geoNamesTo);
 })
 
@@ -59,18 +53,13 @@ const weaAPIKEY = "&key=" + process.env.WEATHER_API_KEY;
 const weaLatitude = "&lat=";
 const weaLongitude = "&lon="; 
 
-console.log(`Weather API is ${process.env.WEATHER_API_KEY}`);
 
 app.post('/findWeather', async function (req, res) {
 	const latitude = req.body.lat;
 	const longitude = req.body.lon;
 	
-	console.log(`latitude: ${latitude} || longitude: ${longitude}`);
-	console.log(weaBaseUrl+weaLatitude+latitude+weaLongitude+longitude+weaAPIKEY);
-	
 	const responseWeather = await fetch (weaBaseUrl+weaLatitude+latitude+weaLongitude+longitude+weaAPIKEY);
 	const weatherBit = await responseWeather.json();
-	console.log(weatherBit);
 	res.json(weatherBit);
 })
 
@@ -85,13 +74,9 @@ const pixAPIKEY = "?key=" + process.env.PIXABAY_API_KEY;
 const pixTextHolderOne = "&q=";
 const pixTextHolderTwo = "&lang=en&image_type=photo";
 
-console.log(`username is ${process.env.PIXABAY_API_KEY}`);
 
 app.post('/findImage', async function (req, res) {
 	const cityName = req.body.city;
-	
-	console.log(cityName);
-	console.log(pixBaseUrl+pixAPIKEY+pixTextHolderOne+cityName+pixTextHolderTwo);
 	
 	const responsePixa = await fetch (pixBaseUrl+pixAPIKEY+pixTextHolderOne+cityName+pixTextHolderTwo);
 	let pixaBay = await responsePixa.json();
