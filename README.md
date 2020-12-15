@@ -53,5 +53,12 @@ WEATHER_API_KEY=**********
 PIXABAY_API_KEY=**********
 ```
 
+For the testing part, I installed jest and supertest
+```
+npm install jest
+npm install supertest
+```
+
+
 The feature I chose to extend my project to stand out is <b>Adding end date and display length of trip</b>.
 
