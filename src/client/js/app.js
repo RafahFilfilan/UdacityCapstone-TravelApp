@@ -1,9 +1,7 @@
 const handleSubmit = async (event) => {
-    
 	event.preventDefault()
-
-    // check what text was put into the form field
-    let cityFrom = document.getElementById('cityFrom').value;
+	// check what text was put into the form field
+	let cityFrom = document.getElementById('cityFrom').value;
 	let cityTo = document.getElementById('cityTo').value;
 	let dateStart = document.getElementById('dateStart').value;
 	let dateEnd = document.getElementById('dateEnd').value;
@@ -23,11 +21,8 @@ const handleSubmit = async (event) => {
 	console.log(daysDiff)
 	console.log("::: Form Submitted :::")
 	
-	
-	
+
 	//Since some data are required for multiple functions, so it is easier to create them as variables.
-	
-	
 	// Global Variables:
 	let paradise = {};
 	let weatherData = {};
@@ -58,13 +53,8 @@ const handleSubmit = async (event) => {
 		let latXYZ = newGeoData.geonames[0].lat;
 		let lonXYZ = newGeoData.geonames[0].lng;
 		
-		//console.log("paradise:");
-		//console.log(paradise);
-		
-		//console.log(latXYZ);
-		
 		//return paradise;
-	}catch (error){
+	} catch (error){
 		console.log('error', error)
 	}
 
@@ -81,9 +71,8 @@ const handleSubmit = async (event) => {
 	
 	try {
 		weatherData = await postWeatherData.json();
-		//console.log(weatherData);
 		//return weatherData;
-	}catch (error){
+	} catch (error){
 		console.log('error', error)
 	}
 
@@ -100,19 +89,10 @@ const handleSubmit = async (event) => {
 	
 	try {
 		pixaData = await postPixaData.json();
-		//console.log(pixaData);
 		//return pixaData;
 	}catch (error){
 		console.log('error', error)
 	}
-	
-	//End of using APIs
-	//console.log(dateStart);
-	//console.log(dateEnd);
-	//console.log(paradise);
-	//console.log(weatherData);
-	//console.log(pixaData);
-	
 	
 	const htmlSection = document.getElementById('results');
 	htmlSection.innerHTML = updateUI(dateStart, dateEnd, daysDiff, paradise, weatherData, pixaData);
@@ -144,9 +124,5 @@ function updateUI (dateStart, dateEnd, daysDiff, paradise, weatherData, pixaData
 }
 
 
-
-
-
-	
 export { handleSubmit }
 
