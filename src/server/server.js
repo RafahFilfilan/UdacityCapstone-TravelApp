@@ -17,7 +17,7 @@ app.use(express.static('dist'))
 
 console.log(__dirname)
 
-
+let projectData = {};
 
 // === GEO NAMES
 // The GeoNames geographical database covers all countries and contains over eleven million placenames.
@@ -30,18 +30,6 @@ const geoTextHolder = "&type=json";
 
 console.log(`GeoName: ${process.env.username}`);
 
-/*
-app.post('/cityFrom', async function (req, res) {
-	const cityFrom = req.body.cityFrom;
-	
-	console.log(cityFrom);
-	console.log(geoBaseUrl+cityFrom+geoUsername+geoTextHolder);
-	const responseFrom = await fetch (geoBaseUrl+cityFrom+geoUsername+geoTextHolder);
-	const geoNamesFrom = await responseFrom.json();
-	console.log(geoNamesFrom);
-	res.json(geoNamesFrom);
-})
-*/
 
 app.post('/cityTo', async function (req, res) {
 	cityTo = req.body.cityTo;
@@ -112,82 +100,11 @@ app.post('/findImage', async function (req, res) {
 })
 
 
-
 // Get Router
 app.get('/', function (req, res) {
-    // res.sendFile('dist/index.html')
-    res.sendFile(path.resolve('src/client/views/index.html'))
-})
-
-// designates what port the app will listen to for incoming requests
-app.listen(8080, function () {
-    console.log('Example app listening on port 8080!')
+    //res.sendFile(path.resolve('src/client/views/index.html'))
+	res.status(200).sendFile('dist/index.html')
 })
 
 
-
-
-
-
-
-
-
-/* ========== START OLD CODE ==========
-// Setup empty JS object to act as endpoint for all routes
-projectData = {};
-
-// Require Express to run server and routes
-const express = require('express');
-
-// Start up an instance of app
-const app = express();
-
-// Dependencies
-const bodyParser = require('body-parser');
-
-// Middleware
-//Here we are configuring express to use body-parser as middle-ware.
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-
-// Cors for cross origin allowance
-const cors = require('cors');
-app.use(cors());
-
-// Initialize the main project folder
-app.use(express.static('dist'))
-
-
-// Setup Server
-const port = 3000;
-// Spin up the server
-const server = app.listen(port, listening);
-// Callback to debug
-function listening(){
-	console.log(`running of localhost: ${port}`);
-};
-
-// Initialize all route with a callback function
-
-// Callback function to complete GET '/all'
-app.get('/all', getData);
-
-function getData(req, res){
-	res.send(projectData);
-	//console.log(projectData);
-};
-
-// Post Route
-app.post('/addWeather', addWeather);
-
-function addWeather(req, res){
-	//console.log(req.body)
-	projectData.date = req.body.date;
-	projectData.zip = req.body.zip;
-	projectData.temp = req.body.temp;
-	projectData.content = req.body.content;
-	
-	res.send(projectData);
-}
-
-==========  OLD CODE ==========*/
+module.exports = app;
