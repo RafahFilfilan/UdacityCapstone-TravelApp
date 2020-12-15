@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Travel App</title>
+</head>
+<body>
+	<div class="holder headline">
+		Travel App
+	</div>
+	
+	<main id="mainMain">
+		<section id="mainSection">
+			<form id="mainForm">
+				
+				<div id="inlineItems">
+					<input id="cityFrom" type="text" name="cityFrom" value="" placeholder="From">
+					<input id="cityTo" type="text" name="cityTo" value="" placeholder="To">
+					<br>
+					<input id="dateStart" type="date" name="dateStart">
+					<input id="dateEnd" type="date" name="dateEnd">
+				</div>
+				<button type="submit" id="submit" name="submit">SEARCH TRIP</button>
+			</form>
+		</section>
+
+		<section id="results">
+
+
+		</section>
+	</main>
+		
+	
+
+	<script>
+		if ('serviceWorker' in navigator) {
+			window.addEventListener('load', function() {
+				navigator.serviceWorker.register('/service-worker.js');
+			});
+		}
+	</script>
+	<footer>
+		<address id="footerAddress">
+			Designed by Rafah<br>
+			Visit her portfolio at <a href="http://byrafah.com/">www.byrafah.com</a><br>
+		</address>
+	</footer>
+
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+.holder {
+	background: #09AA91;
+	color: white;
+	font-size: 35px;
+	text-align: center;
+	font-weight: 600;
+	padding: 30px 10px 60px 10px;
+	border-bottom-left-radius: 50%;
+	border-bottom-right-radius: 50%;
+}
+
+/*  Basic Styling To Override Default For Basic HTML Elements */
+#submit {
+	width: 57%;
+	height: 45px;
+	background: #076572;
+	color: white;
+	font-size: 18px;
+	font-family: 'Poppins', sans-serif;
+	border: 2px solid #076572;
+	box-shadow: 2px 4px 5px #444;
+	text-align: center;
+	padding: 10px 10px 20px 10px;
+	margin-top: 10px;
+}
+
+#submit:hover {
+	color: #CCE574;
+	cursor: pointer;
+}
+
+/* Reset style for HTML element on active to have no border*/
+input:focus, #submit:focus {
+	outline: none;
+}
+
+/* Style for Placeholder Text*/
+input[type=date]::-webkit-datetime-edit {
+	color: #076572; 
+	font-family: 'Poppins', sans-serif;
+}
+
+
+::-webkit-input-placeholder {
+	color: #076572; 
+	font-family: 'Poppins', sans-serif;
+} 
+
+:place-holder-shown {
+	color: #076572; 
+	font-family: 'Poppins', sans-serif;
+} 
+
+::placeholder { /* Firefox, Chrome, Opera */ 
+	color: #076572; 
+	font-family: 'Poppins', sans-serif;
+} 
+  
+:-ms-input-placeholder { /* Internet Explorer 10-11 */ 
+	color: #076572; 
+	font-family: 'Poppins', sans-serif;
+} 
+  
+::-ms-input-placeholder { /* Microsoft Edge */ 
+	color: #076572; 
+	font-family: 'Poppins', sans-serif;
+} 

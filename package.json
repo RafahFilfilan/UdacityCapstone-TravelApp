@@ -1,0 +1,43 @@
+{
+  "name": "final-project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node src/server/server.js",
+    "build": "webpack --config webpack.prod.js",
+    "dev": "webpack-dev-server  --config webpack.dev.js --open"
+  },
+  "keywords": [],
+  "author": "Rafah",
+  "license": "ISC",
+  "description": "## Overview This project requires you to create an asynchronous web app that uses Web API and user data to dynamically update the UI.",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "file-loader": "^6.2.0",
+    "jest": "^26.6.3",
+    "node-fetch": "^2.6.1",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12",
+    "workbox-webpack-plugin": "^6.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.10",
+    "babel-loader": "^8.2.2",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^5.0.1",
+    "html-loader": "^1.3.2",
+    "html-webpack-plugin": "^4.5.0",
+    "mini-css-extract-plugin": "^1.3.3",
+    "node-sass": "^5.0.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.4",
+    "sass-loader": "^10.1.0",
+    "style-loader": "^2.0.0",
+    "terser-webpack-plugin": "^5.0.3",
+    "webpack-dev-server": "^3.11.0"
+  }
+}

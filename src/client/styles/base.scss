@@ -1,0 +1,19 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+	color: rgb(20,20,20);
+	font-family: 'Poppins', sans-serif;
+	text-align: center;
+	margin: 0;
+}
+
+main {
+    flex: 2;
+}
+
+section {
+    max-width: 1400px;
+    margin: 50px auto;
+}
+
