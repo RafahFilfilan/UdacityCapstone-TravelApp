@@ -53,4 +53,5 @@ WEATHER_API_KEY=**********
 PIXABAY_API_KEY=**********
 ```
 
+The feature I chose to extend my project to stand out is <b>Adding end date and display length of trip</b>.
 
